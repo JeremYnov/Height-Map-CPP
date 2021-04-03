@@ -13,7 +13,7 @@ class HeightMapScene : public QGraphicsScene
 public:
     HeightMapScene(int width, int height);
 
-    void generateHeightMap(int width, int height, double scale, int octaves, double persistance, double lacunarity, int seed, int offsetX, int offsetY);
+    void generateHeightMap(int width, int height, double scale, int octaves, double persistance, double lacunarity, int seed, int offsetX, int offsetY, bool isChecked);
 
 private:
     MapGenerator mapGenerator;

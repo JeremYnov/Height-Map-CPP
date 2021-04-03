@@ -16,13 +16,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->widthInput->setValue(ui->graphicsView->width());
 
     // Set noise scale value
-    ui->noiseScaleInput->setValue(0.0);
+    ui->noiseScaleInput->setValue(100.0);
 
     // Set octaves value
     ui->octavesInput->setValue(5);
 
     // Set persistance value
     ui->persistanceInput->setValue(0.5);
+
+    // Set lacunarity value
+    ui->lacunarityInput->setValue(2.0);
 
     // Set map in shade of gray
     ui->shadeOfGrayInput->setChecked(true);
@@ -47,10 +50,13 @@ void MainWindow::on_generateMap_clicked()
     int seed = ui->seedInput->value();
     int offsetX = ui->offsetXInput->value();
     int offsetY = ui->offsetYInput->value();
+
+    bool isChecked = ui->shadeOfGrayInput->isChecked();
+
     ui->graphicsView->setGeometry(ui->graphicsView->x(), ui->graphicsView->y(), ui->widthInput->value(), ui->heightInput->value());
 
     scene = new HeightMapScene(width, height);
     ui->graphicsView->setScene(scene);
 
-    scene->generateHeightMap(width, height, scale, octaves, persistance, lacunarity, seed, offsetX, offsetY);
+    scene->generateHeightMap(width, height, scale, octaves, persistance, lacunarity, seed, offsetX, offsetY, isChecked);
 }

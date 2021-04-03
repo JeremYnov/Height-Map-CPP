@@ -9,7 +9,7 @@
 class MapGenerator
 {
 public:
-    void generateMap(QList<QList<QGraphicsRectItem*>> points);
+    void generateMap(QList<QList<QGraphicsRectItem*>> points, bool isChecked);
 
     int mapWidth;
     int mapHeight;
