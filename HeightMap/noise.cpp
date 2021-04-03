@@ -34,7 +34,7 @@ QList<QList<double>> Noise::generateNoiseMap(int mapWidth, int mapHeight, double
 
                 double perlinValue = pn.noise(sampleX, sampleY, 0.8) * 2 - 1;
 
-                noiseHeight = perlinValue * amplitude;
+                noiseHeight += perlinValue * amplitude;
                 amplitude = amplitude * persistance;
                 frequency = frequency * lacunarity;
 

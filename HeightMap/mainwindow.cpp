@@ -43,6 +43,10 @@ void MainWindow::on_generateMap_clicked()
     int seed = ui->seedInput->value();
     int offsetX = ui->offsetXInput->value();
     int offsetY = ui->offsetYInput->value();
+    ui->graphicsView->setGeometry(ui->graphicsView->x(), ui->graphicsView->y(), ui->widthInput->value(), ui->heightInput->value());
+
+    scene = new HeightMapScene(width, height);
+    ui->graphicsView->setScene(scene);
 
     scene->generateHeightMap(width, height, scale, octaves, persistance, lacunarity, seed, offsetX, offsetY);
 }
