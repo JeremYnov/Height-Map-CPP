@@ -13,11 +13,19 @@ void MapGenerator::generateMap(QList<QList<QGraphicsRectItem*>> points){
     for (int y = 0; y < mapHeight; y++) {
 
         for (int x = 0; x < mapWidth; x++) {
-            if (noiseMap[y][x] > 0.5) {
-                points[y][x]->setBrush(Qt::black);
-            } else {
-                points[y][x]->setBrush(Qt::white);
-            }
+
+            quint32 r = 255 * noiseMap[y][x];
+            quint32 g = 255 * noiseMap[y][x];
+            quint32 b = 255 * noiseMap[y][x];
+
+            points[y][x]->setBrush(QColor(r,g,b));
+
+
+//            if (noiseMap[y][x] > 0.5) {
+//                points[y][x]->setBrush(Qt::black);
+//            } else {
+//                points[y][x]->setBrush(Qt::white);
+//            }
         }
 
     }
