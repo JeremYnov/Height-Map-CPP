@@ -36,10 +36,10 @@ void MainWindow::on_generateMap_clicked()
 {
     int height = ui->graphicsView->height() -2;
     int width = ui->graphicsView->width() -2;
-    double scale = 100;
-    int octaves = 5;
-    double lacunarity = 2.2;
-    double persistance = 0.5;
-    int seed = 25;
+    double scale = ui->noiseScaleInput->value();
+    int octaves = ui->octavesInput->value();
+    double lacunarity = ui->lacunarityInput->value();
+    double persistance = ui->persistanceInput->value();
+    int seed = ui->seedInput->value();
     scene->generateHeightMap(width, height, scale, octaves, persistance, lacunarity, seed);
 }
