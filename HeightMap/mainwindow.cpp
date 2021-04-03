@@ -24,6 +24,10 @@ MainWindow::MainWindow(QWidget *parent)
     // Set persistance value
     ui->persistanceInput->setValue(0.5);
 
+    // Set map in shade of gray
+    ui->shadeOfGrayInput->setChecked(true);
+    //qDebug()<<ui->shadeOfGrayInput->isChecked();
+
     ui->graphicsView->setScene(scene);
 }
 
