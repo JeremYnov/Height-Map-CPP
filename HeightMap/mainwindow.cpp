@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    scene = new HeightMapScene(ui->graphicsView->width(), ui->graphicsView->height());
+    scene = new HeightMapScene(ui->graphicsView->width() - 2, ui->graphicsView->height() - 2);
 
     // Set map height and map width values
     ui->heightInput->setValue(ui->graphicsView->height());
@@ -38,5 +38,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_generateMap_clicked()
 {
-    scene->generateHeightMap();
+    int height = ui->heightInput->value() - 2;
+    int width = ui->widthInput->value() - 2;
+    double scale = ui->noiseScaleInput->value();
+    int octaves = ui->octavesInput->value();
+    double lacunarity = ui->lacunarityInput->value();
+    double persistance = ui->persistanceInput->value();
+    int seed = ui->seedInput->value();
+    int offsetX = ui->offsetXInput->value();
+    int offsetY = ui->offsetYInput->value();
+    ui->graphicsView->setGeometry(ui->graphicsView->x(), ui->graphicsView->y(), ui->widthInput->value(), ui->heightInput->value());
+
+    scene = new HeightMapScene(width, height);
+    ui->graphicsView->setScene(scene);
+
+    scene->generateHeightMap(width, height, scale, octaves, persistance, lacunarity, seed, offsetX, offsetY);
 }
