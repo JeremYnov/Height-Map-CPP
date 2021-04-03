@@ -14,6 +14,10 @@ public:
     int mapWidth;
     int mapHeight;
     double noiseScale;
+    int octaves;
+    double persistance;
+    double lacunarity;
+    int seed;
 
 private:
     Noise noise;

@@ -5,16 +5,10 @@
 
 HeightMapScene::HeightMapScene(int width, int height)
 {
-
-    mapGenerator.mapHeight = height - 2;
-    mapGenerator.mapWidth = width - 2;
-    mapGenerator.noiseScale = 100;
-
-
-    for (int y = 0 ; y < mapGenerator.mapHeight ; y++) {
+    for (int y = 0 ; y < height ; y++) {
         points.append(QList<QGraphicsRectItem*>());
 
-        for (int x = 0 ; x < mapGenerator.mapWidth ; x++) {
+        for (int x = 0 ; x < width ; x++) {
 
             QGraphicsRectItem* point = new QGraphicsRectItem();
 
@@ -28,7 +22,15 @@ HeightMapScene::HeightMapScene(int width, int height)
     }
 }
 
-void HeightMapScene::generateHeightMap()
+void HeightMapScene::generateHeightMap(int width, int height, double scale, int octaves, double persistance, double lacunarity, int seed)
 {
+    mapGenerator.mapHeight = height;
+    mapGenerator.mapWidth = width;
+    mapGenerator.noiseScale = scale;
+    mapGenerator.octaves = octaves;
+    mapGenerator.lacunarity = lacunarity;
+    mapGenerator.persistance = persistance;
+    mapGenerator.seed = seed;
+
     mapGenerator.generateMap(points);
 }

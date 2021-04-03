@@ -8,7 +8,7 @@
 
 void MapGenerator::generateMap(QList<QList<QGraphicsRectItem*>> points){
 
-    QList<QList<double>> noiseMap = noise.generateNoiseMap(mapWidth, mapHeight, noiseScale);
+    QList<QList<double>> noiseMap = noise.generateNoiseMap(mapWidth, mapHeight, noiseScale, octaves, persistance, lacunarity, seed);
 
     for (int y = 0; y < mapHeight; y++) {
 
