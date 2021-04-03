@@ -18,6 +18,8 @@ public:
     double persistance;
     double lacunarity;
     int seed;
+    int offsetX;
+    int offsetY;
 
 private:
     Noise noise;

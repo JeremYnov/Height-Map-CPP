@@ -6,7 +6,7 @@
 #include "perlinnoise.h"
 
 
-QList<QList<double>> Noise::generateNoiseMap(int mapWidth, int mapHeight, double scale, int octaves, double persistance, double lacunarity, int seed){
+QList<QList<double>> Noise::generateNoiseMap(int mapWidth, int mapHeight, double scale, int octaves, double persistance, double lacunarity, int seed, int offsetX, int offsetY){
 
     QList<QList<double>> noiseMap;
 
@@ -15,6 +15,9 @@ QList<QList<double>> Noise::generateNoiseMap(int mapWidth, int mapHeight, double
     }
 
     PerlinNoise pn(seed);
+
+    double halfWidth = mapWidth / 2.0;
+    double halfHeight = mapHeight / 2.0;
 
     for (int y = 0; y < mapHeight; y++) {
         QList<double> listX;
@@ -26,8 +29,8 @@ QList<QList<double>> Noise::generateNoiseMap(int mapWidth, int mapHeight, double
             double noiseHeight = 0;
 
             for (int i = 0; i < octaves; i++) {
-                double sampleX = x / scale * frequency;
-                double sampleY = y / scale * frequency;
+                double sampleX = (x - halfWidth) / scale * frequency + offsetX;
+                double sampleY = (y - halfHeight) / scale * frequency + offsetY;
 
                 double perlinValue = pn.noise(sampleX, sampleY, 0.8) * 2 - 1;
 

@@ -34,12 +34,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_generateMap_clicked()
 {
-    int height = ui->graphicsView->height() -2;
-    int width = ui->graphicsView->width() -2;
+    int height = ui->heightInput->value() - 2;
+    int width = ui->widthInput->value() - 2;
     double scale = ui->noiseScaleInput->value();
     int octaves = ui->octavesInput->value();
     double lacunarity = ui->lacunarityInput->value();
     double persistance = ui->persistanceInput->value();
     int seed = ui->seedInput->value();
-    scene->generateHeightMap(width, height, scale, octaves, persistance, lacunarity, seed);
+    int offsetX = ui->offsetXInput->value();
+    int offsetY = ui->offsetYInput->value();
+
+    scene->generateHeightMap(width, height, scale, octaves, persistance, lacunarity, seed, offsetX, offsetY);
 }

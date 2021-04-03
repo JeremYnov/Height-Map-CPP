@@ -22,7 +22,7 @@ HeightMapScene::HeightMapScene(int width, int height)
     }
 }
 
-void HeightMapScene::generateHeightMap(int width, int height, double scale, int octaves, double persistance, double lacunarity, int seed)
+void HeightMapScene::generateHeightMap(int width, int height, double scale, int octaves, double persistance, double lacunarity, int seed, int offsetX, int offsetY)
 {
     mapGenerator.mapHeight = height;
     mapGenerator.mapWidth = width;
@@ -31,6 +31,8 @@ void HeightMapScene::generateHeightMap(int width, int height, double scale, int 
     mapGenerator.lacunarity = lacunarity;
     mapGenerator.persistance = persistance;
     mapGenerator.seed = seed;
+    mapGenerator.offsetX = offsetX;
+    mapGenerator.offsetY = offsetY;
 
     mapGenerator.generateMap(points);
 }
